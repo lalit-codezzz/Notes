@@ -407,6 +407,16 @@ Timeline example:
 
 ---
 
+## What is <code>will-change</code> property?
+
+It tells browser what will happen with this element.
+
+- Without **will-change**, if any animation occurs, let's say user hovered on an element than: Browser creates a new layer for it -> Repaints -> Composites.
+
+- With **will-change**, the browser already prepared -> Paints that element on a different layer -> User hovered -> GPU animates that element.
+
+---
+
 ## Key Performance Takeaways
 
 | Problem | Solution |
