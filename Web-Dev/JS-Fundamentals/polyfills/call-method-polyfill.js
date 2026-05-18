@@ -26,4 +26,5 @@ function customCall(context, ...args) {
 
 Function.prototype.customCall = customCall;
 
-getName.customCall(null);
+getName.customCall(person);
+
