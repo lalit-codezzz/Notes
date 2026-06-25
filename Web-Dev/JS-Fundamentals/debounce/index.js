@@ -1,7 +1,5 @@
 const fetchGithubApiBtn = document.querySelector("#fetch-github-api-btn");
 
-let count = 0;
-
 async function fetchGithubApi() {
   try {
     const response = await fetch("https://api.github.com/users?since=135", {
@@ -38,8 +36,27 @@ function debounce(fn, delay) {
   };
 }
 
-fetchGithubApiBtn.addEventListener("click", () => {
-    
-})
+fetchGithubApiBtn.addEventListener("click", () => {});
 
 const debouncedFetchGithubApi = debounce(fetchGithubApi, 500);
+
+// _______________________________________________________________________________________________
+// _______________________________Trying debouncing in "resize" event_____________________________
+// _______________________________________________________________________________________________
+
+let count = 0;
+
+function debounceResize(fn, delay) {
+  let timer;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      fn();
+    }, delay);
+  };
+}
+
+window.addEventListener(
+  "resize",
+  debounceResize(() => console.log("Resize: ", ++count), 500),
+);
